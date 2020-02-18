@@ -18,8 +18,21 @@ let sfxWrong = new Audio("Assets/sfx/incorrect.wav");
 function quiz(){
     startBtn.classList.add("hide");
     startTimer();
+    questionInv = shuffleQuestions();
+    console.log(questionInv);
+}
 
-
+function shuffleQuestions() {
+    questionInv = questions;
+    var shuffleItem;
+    var shuffleNum;
+    for (let i = 0; i < 15; i++) {
+        shuffleNum = Math.floor(Math.random() * questionInv.length);
+        shuffleItem = questionInv.splice(shuffleNum, 1);
+        questionInv = questionInv.concat(shuffleItem);
+    }
+    questions = questionInv;
+    return questionInv;
 }
 
 function startTimer() {
