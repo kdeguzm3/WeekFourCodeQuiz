@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+
+.quizBox {
+    position: absolute;
+    top: 50px;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px black solid;
+    justify-self: center;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+    background-image: url(./Assets/water.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#questionBox, #choicesBox {
+    background-color: rgba(46, 49, 49, 0.9);
+    margin: .5em;
+    padding: 1.5em;
+    border-radius: 10px;
+}
+#timer {
+    position: absolute;
+    border: 5px black solid;
+    border-left-width: 0px;
+    height: 4em;
+    width: 4em;
+    top: 0;
+    right: -4em;
+    text-align: center;
+    padding: 1em;
+    border-radius: 0 0 20px 0;
+    background-color: rgba(46, 49, 49, 0.9);
+}
+
+#startBtn {
+    position: absolute;
+    top: 80px;
+    left: calc(100% + 10px);
+    background-color: black;
+    padding: 7px;
+    border-radius: 7px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#highscoreBtn {
+    position: absolute;
+    top: 120px;
+    left: calc(100% + 10px);
+    background-color: black;
+    padding: 7px;
+    border-radius: 7px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hide {
+    visibility: hidden;
+}
