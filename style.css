@@ -27,6 +27,28 @@
     padding: 1.5em;
     border-radius: 10px;
 }
+
+#questionBox {
+    text-align: center;
+    
+}
+
+.question {
+    margin: auto;
+    padding: 70px;
+    vertical-align: middle;
+}
+
+.choice {
+    height: 2em;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 1em;
+    text-align: center;
+    padding: .5em;
+    margin: 2px;
+    cursor: pointer;
+}
+
 #timer {
     position: absolute;
     border: 5px black solid;
@@ -50,6 +72,7 @@
     border-radius: 7px;
     display: inline-block;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 #highscoreBtn {
@@ -61,6 +84,7 @@
     border-radius: 7px;
     display: inline-block;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .hide {

@@ -1,5 +1,8 @@
 //Variables
 let questionInv = [];
+let questionIndex = 0;
+let score = 0;
+let answer;
 let time = questions.length * 15;
 let timer;
 
@@ -15,11 +18,15 @@ let sfxRight = new Audio("Assets/sfx/correct.wav");
 let sfxWrong = new Audio("Assets/sfx/incorrect.wav");
 
 //quiz script
-function quiz(){
+function startQuiz(){
     startBtn.classList.add("hide");
     startTimer();
     questionInv = shuffleQuestions();
-    console.log(questionInv);
+    time = questions.length * 15;
+    questionIndex = 0;
+    score = 0;
+    buildQuestion();
+    
 }
 
 function shuffleQuestions() {
@@ -36,6 +43,7 @@ function shuffleQuestions() {
 }
 
 function startTimer() {
+    clearInterval(timer);
     timer = setInterval(timerFn, 1000);
 }
 
@@ -48,6 +56,50 @@ function timerFn() {
     }
 }
 
+function buildQuestion() {
+    let newQuestion = document.createElement("h1");
+    answer = questions[questionIndex].answer;
+    newQuestion.textContent = questions[questionIndex].title;
+    newQuestion.classList.add("question");
+    questionDiv.innerHTML = "";
+    choicesDiv.innerHTML = "";
+    questionDiv.appendChild(newQuestion);
+    let choiceArray = questions[questionIndex].choices;
+    choiceArray.forEach(element => {
+        let newChoice = document.createElement("div");
+        newChoice.classList.add("choice");
+        newChoice.setAttribute("data", element);
+        newChoice.textContent = element;
+        choicesDiv.appendChild(newChoice);
+    })
+    console.log(choiceArray);
+}
+
+startBtn.addEventListener("click", () => {startQuiz();});   
+
+choicesDiv.addEventListener("click", (e) => {
+    if(e.target.classList.contains("choice")){
+        if (e.target.getAttribute("data") == answer){
+            sfxRight.play();
+            score++;
+            console.log("correct");
+        } else {
+            sfxWrong.play();
+            time = time - 15;
+        }
+    }
+    questionIndex++;
+    if (questionIndex == questions.length) {
+        quizEnd();
+    }
+    else {
+        buildQuestion();
+    }
+})
+
 function quizEnd() {
+    questionDiv.innerHTML = "";
+    choicesDiv.innerHTML = "";
+    startBtn.classList.remove("hide");
     clearInterval(timer);
 }
